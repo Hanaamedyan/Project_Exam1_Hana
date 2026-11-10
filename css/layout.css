@@ -164,7 +164,7 @@ main {
         box-shadow: none;
     }
 
-    .nav__lis,
+    .nav__list,
     .nav__list > li,
     [data-auth-nav] {
         flex-direction: row;
