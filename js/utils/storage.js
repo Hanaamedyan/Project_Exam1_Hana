@@ -20,7 +20,7 @@
  }
 
  /** 
- * Loades and parses a JSON value.
+ * Loads and parses a JSON value.
  * @param {string}  key 
  * @param {*} [fallback=null] - Returned when nothing is saved.
  */

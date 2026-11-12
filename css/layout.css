@@ -109,7 +109,7 @@ main {
     gap: var(--space-1);
 }
 
-.nav__link:hover {
+.nav__link {
     display: flex;
     align-items: center;
     min-height: var(--tap-size);
