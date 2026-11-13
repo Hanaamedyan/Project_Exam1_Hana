@@ -17,6 +17,42 @@
     transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 
+.btn--primary {
+    background: var(--c-primary);
+    color: var(--c-white);
+}
+
+.btn--primary:hover {
+    background: var(--c-primary-dark);
+    color: var(--c-white);
+}
+
+/* Disabled button */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    background: var(--c-border);
+    color: var(--c-disabled-text);
+    border-color: transparent;
+    cursor: not-allowed;
+}
+
+/* Loading button */
+.btn[aria-busy="true"] {
+    background: var(--c-primary);
+    color: var(--c-white);
+    cursor: progress;
+}
+
+/* Small white spinner inside a loading button */
+.btn__spinner {
+    width: 1.1em;
+    height: 1.1em;
+    border: 2.5px solid color-mix(in srgb, var(--c-white) 35%, transparent);
+    border-top-color: var(--c-white);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
 .btn--icon {
     position: relative;
     width: var(--tap-size);
