@@ -8,10 +8,11 @@ import { getProduct } from "../api/products.js";
 import { createPrice } from "../ui/productCard.js";
 import { createRating } from "../ui/rating.js";
 import { showLoader, hideLoader } from "../ui/loader.js";
-import { showMessage } from "../ui/messages.js";
+import { showMessage, showToast } from "../ui/messages.js";
 import { getParam, pageUrl } from "../utils/url.js";
 import { hasDiscount, getDiscountPercent } from "../utils/format.js";
 import { el } from "../utils/dom.js";
+
 
 
 const productEl = document.querySelector("[data-product]");
@@ -71,7 +72,7 @@ function renderProduct(product) {
         el("p", { className: "product__description", }, product.description),
         createTags(product.tags),
 
-        el("div", { className: "product__actions", "data-product-section": "" })
+        el("div", { className: "product__actions", "data-product-section": "" }, createShareButton(product))
     );
 
     productEl.replaceChildren(
@@ -92,6 +93,59 @@ function createTags(tags = []) {
         { className: "tags", "aria-label": "Tags" },
         tags.map((tag) => el("li", { className: "tag" }, tag))
     );
+}
+
+/**
+ * Share button. Uses the device's share menu when available.
+ * Otherwise copies the link to the clipboard.
+ * @param {object} - product
+ * @returns {HTMLElement}
+ */
+
+function createShareButton(product) {
+    const shareUrl = window.location.href
+
+    return el(
+        "button",
+        {
+            type: "button",
+            className: "btn btn--icon",
+            "aria-label": "Share this product",
+            title: "Share",
+            onClick: async () => {
+                try {
+                    if (navigator.share) {
+                        await navigator.share({ title: product.title, url: shareUrl });
+                        showToast("Thanks for sharing!");
+                    } else {
+                        await navigator.clipboard.writeText(shareUrl);
+                        showToast("Link copied to clipboard.");
+                    }
+                } catch (error) {
+                    if (error.name !== "AbortError") {
+                        showToast("Could not share. Copy the link from the address bar instead.")
+                    }
+                }
+            },
+        },
+        shareIcon()
+    );
+}
+
+/** Share icon as inline SVG.
+ * @returns {SVGElement}
+ */
+function shareIcon() {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("width", "20");
+    svg.setAttribute("height", "20");
+    svg.setAttribute("aria-hidden", "true");
+    svg.innerHTML =
+    '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke_linejoin="round">' +
+    '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>' +
+    '<path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></g>';
+    return svg;
 }
 
 /**
