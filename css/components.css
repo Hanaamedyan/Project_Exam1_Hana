@@ -486,3 +486,48 @@ toast {
     width: 22px;
     background: var(--c-white);
 }
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--r-pill);
+    background: var(--c-secondary);
+    font-size: var(--fs-caption);
+    font-weight: 500;
+}
+
+/* Bigger discount badge */
+.badge--large {
+    top: var(--space-4);
+    left: var(--space-4);
+    font-size: var(--fs-small);
+    padding: 0.375rem 0.875rem;
+}
+
+/* Breadcrumb */
+.breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--fs-small);
+    color: var(--c-muted);
+    margin-bottom: var(--space-5);
+}
+
+.breadcrumb li + li::before {
+    content: "/";
+    margin-right: var(--space-2);
+}
+
+.breadcrumb a {
+    color: var(--c-muted);
+}
+
