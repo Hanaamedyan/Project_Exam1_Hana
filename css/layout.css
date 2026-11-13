@@ -181,7 +181,7 @@ main {
     font-size: var(--fs-small);
 }
 
-.site-footer,
+.site-footer a,
 .site-footer .logo,
 .footer-heading {
     color: var(--c-white);

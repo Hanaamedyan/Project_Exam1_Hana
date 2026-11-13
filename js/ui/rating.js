@@ -21,7 +21,7 @@ export function createRating(rating = 0, { reviewCount } = {}) {
     }
 
     const fullStars = Math.floor(value);
-    const stars = "*".repeat(fullStars) + "☆".repeat(5 - fullStars);
+    const stars = "★".repeat(fullStars) + "☆".repeat(5 - fullStars);
     const label = Number.isInteger(value) ? String(value) : value.toFixed(1);
 
     return el(

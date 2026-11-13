@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Product | Hylle </title>
+        <meta name="description" content="Product details, price, reviews and ratings at Hylle online shop." />
+        <meta name="theme-color" content="#2F5D50" />
+        <meta property="og:title" content="Product | Hylle" />
+        <meta property="og:description" content="Product details, price, reviews and ratings at Hylle online shop." />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Hylle" />
+        <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" />
+        <link rel="stylesheet" href="../css/main.css" />
+    </head>
+
+    <body data-root="../">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="../index.html" class="logo" aria-label="Hylle - go to the shop">
+                <img src="../assets/logo-icon.svg" alt="" width="36" height="36" />
+                <span aria-hidden="true">hylle</span>
+            </a>
+
+            <nav class="nav" id="main-nav" aria-label="Main">
+                <ul class="nav__list">
+                    <li><a href="../index.html" class="nav__link">Shop</a></li>
+                    <li data-auth-nav></li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="../cart/index.html" class="btn btn--icon" data-cart-link aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z" /><path d="M6 6 5 3H2" /><circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" /></svg>
+                    <span class="cart-count" data-cart-count hidden>0</span>
+                </a>
+                <button type="button" class="btn btn--icon menu-toggle" data-menu-toggle aria-controls="main-nav" aria-expanded="false" aria-label="Menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Shop</a></li>
+                    <li aria-current="page" data-breadcrumb-current>Product</li>
+                </ol>
+            </nav>
+
+            <article class="product" data-product aria-live="polite"></article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div>
+                <a href="../index.html" class="logo">hylle</a>
+                <p class="site-footer__tagline">Everyday things, well chosen. A fictional shop made for Noroff Exam Project 1.</p>
+            </div>
+        <div>
+            <h2 class="eyebrow footer-heading">Shop</h2>
+            <ul class="footer-list">
+                <li><a href="../index.html">All products</a></li>
+                <li><a href="../cart/index.html">Cart</a></li>
+        </ul>
+        </div>
+        <div>
+            <h2 class="eyebrow footer-heading">Account</h2>
+            <ul class="footer-list">
+            <li><a href="../account/login.html">Log in</a></li>
+            <li><a href="../account/register.html">Register</a></li>
+            </ul>
+        </div>
+        <p class="site-footer__bottom">&copy; <span data-year>2026</span> Hylle. Student project - no real purchases are made.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../js/pages/product.js"></script>
+</body>
+</html>
