@@ -297,3 +297,192 @@ toast {
         transform: rotate(360deg);
     }
 }
+
+/* White button on the green carousel */
+
+.btn--light {
+    background: var(--c-white);
+    color: var(--c-primary);
+}
+
+.btn--light:hover {
+    background: var(--c-secondary);
+    color: var(--c-primary-dark);
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--c-primary);
+    color: var(--c-white);
+}
+
+/* Placeholder height while products load */
+.carousel.is-loading {
+    min-height: 22rem;
+    background: linear-gradient(110deg, var(--c-primary) 30%, var(--c-primary-light) 50%, var(--c-primary) 70%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: -200% 0;
+    }
+}
+
+.carousel__viewport {
+    overflow: hidden;
+}
+
+/* The track holds all slides side by side; moving it to the left shows nest slide. */
+.carousel__track {
+    display: flex;
+    transition: transform var(--duration) var(--ease);
+}
+
+.carousel__slide {
+    flex: 0 0 100%;
+    display: grid;
+    gap: var(--space-5);
+    align-items: center;
+    padding: var(--space-6) var(--space-5) var(--space-9);
+}
+
+@media (min-width: 48em) {
+    .carousel__slide {
+        grid-template-columns: 1.1fr 1fr;
+        gap: var(--space-7);
+        padding: var(--space-7) var(--space-7) var(--space-9);
+    }
+}
+
+.carousel__content {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: start;
+}
+
+.carousel__eyebrow {
+    color: var(--c-secondary);
+}
+
+.carousel__title {
+    font-size: var(--fs-display);
+    line-height: 1.1;
+}
+
+/* Long descriptions are cut off after 3 lines */
+
+.carousel__text {
+    max-width: 42ch;
+    opacity: 0.88;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.carousel .price__now--sale {
+    color: var(--c-accent-light);
+}
+
+.carousel .price__was {
+    color: color-mix(in srgb, var(--c-white) 75%, transparent);
+}
+
+.carousel__content .btn {
+    margin-top: var(--space-2);
+}
+
+/* Image on top on mobile, on the right on desktop */
+.carousel__media {
+    order: -1;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--c-secondary);
+}
+
+@media (min-width: 48em) {
+    .carousel__media {
+        order: 0;
+    }
+}
+
+.carousel__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel__controls {
+    position: absolute;
+    left: var(--space-5);
+    bottom: var(--space-5);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+@media (min-width: 48em) {
+    .carousel__controls {
+        left: var(--space-7);
+    }
+}
+
+.carousel__btn {
+    width: var(--tap-size);
+    height: var(--tap-size);
+    display: grid;
+    place-items: center;
+    border-radius: var(--r-pill);
+    border: 1px solid color-mix(in srgb, var(--c-white) 40%, transparent);
+    background: color-mix(in srgb, var(--c-white) 12%, transparent);
+    color: var(--c-white);
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.carousel__btn:hover {
+    background: color-mix(in srgb, var(--c-white) 25%, transparent);
+}
+
+/* White focus ring sho it shows the green background */
+.carousel :focus-visible {
+    outline-color: var(--c-white);
+}
+
+.carousel__dots {
+    display: flex;
+    gap: var(--space-1);
+}
+
+/* Dot buttons: small visible dot */
+.carousel__dot {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    border: 0;
+    background: none;
+    padding: 0;
+}
+
+.carousel__dot::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: var(--r-pill);
+    background: color-mix(in srgb, var(--c-white) 45%, transparent);
+    transition: width 0.2s var(--ease), background-color 0.2s;
+}
+
+/* The active dot becomes a wider white pill */
+.carousel__dot[aria-current="true"]::after {
+    width: 22px;
+    background: var(--c-white);
+}
