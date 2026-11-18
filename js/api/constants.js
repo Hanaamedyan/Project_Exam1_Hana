@@ -10,17 +10,17 @@ export const API_BASE = "https://v2.api.noroff.dev";
 export const API_SHOP = `${API_BASE}/online-shop`;
 
 /** POST {name, email, password } to create account */
-export const API_REGISTER = `${API_BASE}/online-shop`;
+export const API_REGISTER = `${API_BASE}/auth/register`;
 
 /** POST {email, password} to log in and receive access token. */
 export const API_LOGIN = `${API_BASE}/auth/login`;
 
 /** Keys used to save data in the browser's localStorage. */
 export const STORAGE_KEYS = {
-    token: "hylle_token",
-    user: "hylle_user",
-    cart: "hylle_cart",
-    lastOrder: "hylle_last_order",
+  token: "hylle_token",
+  user: "hylle_user",
+  cart: "hylle_cart",
+  lastOrder: "hylle_last_order",
 };
 
 /** How many products the feed and carousel show. */
