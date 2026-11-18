@@ -294,7 +294,7 @@ toast {
 }
 
 .alert--success {
-    background: var(--c-sucess-tint);
+    background: var(--c-success-tint);
     border-color: var(--c-success);
 }
 
