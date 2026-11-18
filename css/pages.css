@@ -84,3 +84,11 @@
 .review__author {
     font-weight: 600;
 }
+
+/* Auth pages */
+.auth-switch {
+    margin-top: var(--space-5);
+    text-align: center;
+    font-size: var(--fs-small);
+}
+

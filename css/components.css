@@ -567,3 +567,98 @@ toast {
     color: var(--c-muted);
 }
 
+/* Forms */
+
+.panel > [data-form-message]:not( [hidden] )  {
+    margin-bottom: var(--space-5);
+}
+
+.form {
+    display: grid;
+    gap: var(--space-5);
+}
+
+.field {
+    display: grid;
+    gap: var(--space-1);
+}
+
+.field label {
+    font-weight: 600;
+    font-size: var(--fs-small);
+}
+
+.field__hint {
+    font-size: 0.8125rem;
+    color: var(--c-muted);
+}
+
+.input {
+    width: 100%;
+    min-height: var(--tap-size);
+    padding: 0.75rem 0.875rem;
+    background: var(--c-surface);
+    border: 1.5px solid var(--c-border-strong);
+    border-radius: var(--r-md);
+    font-size: var(--fs-body);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px var(--c-primary-tint);
+}
+
+.field.is-invalid .input {
+    border-color: var(--c-error);
+    box-shadow: 0 0 0 3px var(--c-error-tint);
+}
+
+.field.is-valid .input {
+    border-color: var(--c-success);
+}
+
+.field__error {
+    min-height: 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--c-error);
+}
+
+.field__error:not(:empty)::before {
+    content: "⚠ ";
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-small);
+    cursor: pointer;
+}
+
+.checkbox input {
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--c-primary);
+}
+
+.btn--block {
+    width: 100%;
+}
+
+/* Panel */
+.panel {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-lg);
+    padding: var(--space-5);
+}
+
+@media (min-width: 40em) {
+    .panel {
+        padding: var(--space-6);
+    }
+}
+
+
