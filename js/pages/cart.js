@@ -1,3 +1,15 @@
-import { initHeader } from "../ui/header.js";
+/**
+ * cart.js
+ * Only for logged in users.
+ */
 
-initHeader();
+import { initHeader } from "../ui/header.js";
+import { requireLogin } from "../utils/guard.js";
+
+/** Starts the page. */
+function init() {
+  if (!requireLogin()) return;
+  initHeader();
+}
+
+init();
