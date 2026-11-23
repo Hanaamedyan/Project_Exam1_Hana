@@ -13,6 +13,7 @@ import { isLoggedIn } from "../utils/storage.js";
 import { getParam, pageUrl, getCurrentPagePath } from "../utils/url.js";
 import { hasDiscount, getDiscountPercent } from "../utils/format.js";
 import { el } from "../utils/dom.js";
+import { addToCart } from "../utils/cart.js";
 
 const productEl = document.querySelector("[data-product]");
 const breadcrumbCurrent = document.querySelector("[data-breadcrumb-current]");
@@ -126,11 +127,28 @@ function createCartAction(product) {
     );
   }
 
+  let resetTimer;
+
   return el(
     "button",
     {
       type: "button",
       className: "btn btn--primary",
+      onClick: (event) => {
+        const button = event.currentTarget;
+        addToCart(product);
+
+        button.textContent = "✓ Added to cart";
+        button.classList.add("is-added");
+
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          button.textContent = "Add to cart";
+          button.classList.remove("is-added");
+        }, 2000);
+
+        showToast(`${product.title} was added to your cart.`);
+      },
     },
     "Add to cart",
   );
