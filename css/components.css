@@ -667,4 +667,64 @@ toast {
     }
 }
 
+.link-button {
+    background: none;
+    border: 0;
+    padding: var(--space-1) 0;
+    color: var(--c-ink);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    min-height: 2rem;
+}
+
+.link-button--danger {
+    color: var(--c-error);
+}
+
+.panel__title {
+    font-size: var(--fs-h3);
+    margin-bottom: var(--space-4);
+}
+
+/* Quantity stepper */
+.stepper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--c-border-strong);
+    border-radius: var(--r-md);
+    background: var(--c-surface);
+    overflow: hidden;
+}
+
+.stepper__btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    background: none;
+    font-size: 1.25rem;
+}
+
+.stepper__btn:hover {
+    background: var(--c-primary-tint)
+}
+
+.stepper__input {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    text-align: center;
+    font-weight: 600;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Hide the browser's own up/down arrows in the number inout */
+.stepper__input::-webkit-outer-spin-button,
+.stepper__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
