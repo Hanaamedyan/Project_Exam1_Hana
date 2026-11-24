@@ -615,6 +615,17 @@ toast {
     box-shadow: 0 0 0 3px var(--c-primary-tint);
 }
 
+select.input {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231F2421' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    cursor: pointer;
+}
+
 .field.is-invalid .input {
     border-color: var(--c-error);
     box-shadow: 0 0 0 3px var(--c-error-tint);
@@ -726,5 +737,81 @@ toast {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.form-row {
+    display: grid;
+    gap: var(--space-5)
+}
+
+@media (min-width: 40em) {
+    .form-row--2 {
+        grid-template-columns: 1fr 1fr;
+    }
+    .form-row--postcode {
+        grid-template-columns: 9rem 1fr;
+    }
+}
+
+.fieldset {
+    border: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+}
+
+.fieldset legend {
+    margin-bottom: var(--space-2);
+}
+
+.panel__title--legend {
+    margin: 0;
+}
+
+
+.radio-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 3.5rem;
+    padding: var(--space-3) var(--space-4);
+    background: var(--c-surface);
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--r-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s;
+}
+
+.radio-card:hover {
+    border-color: var(--c-border-strong);
+}
+
+.radio-card input {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: var(--c-primary);
+}
+
+.radio-card:has(input:checked) {
+    border-color: var(--c-primary);
+    background: var(--c-primary-tint);
+}
+
+.radio-card:has(input:focus-visible) {
+    outline: 3px solid var(--c-primary);
+    outline-offset: 2px;
+}
+
+.radio-card__hint {
+    margin-left: auto;
+    font-size: var(--fs-small);
+    color: var(--c-muted);
+    font-weight: 400;
+}
+
+.fieldset.is-invalid .radio-card {
+    border-color: var(--c-error);
+}
+
 
 
