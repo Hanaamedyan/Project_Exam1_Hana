@@ -5,9 +5,10 @@
 
 import { initHeader } from "../ui/header.js";
 import { requireLogin } from "../utils/guard.js";
-import { getCart, getCartTotal } from "../utils/cart.js";
+import { getCart, getCartTotal, clearCart } from "../utils/cart.js";
 import { formatPrice, getUnitPrice } from "../utils/format.js";
-import { getUser } from "../utils/storage.js";
+import { getUser, save } from "../utils/storage.js";
+import { STORAGE_KEYS } from "../api/constants.js";
 import {
   validateForm,
   addLiveValidation,
@@ -16,6 +17,7 @@ import {
   validatePostcode,
   validatePhone,
 } from "../utils/validation.js";
+import { setButtonLoading } from "../ui/loader.js";
 import { showMessage, clearMessage } from "../ui/messages.js";
 import { pageUrl } from "../utils/url.js";
 import { el } from "../utils/dom.js";
@@ -24,6 +26,7 @@ const form = document.querySelector("[data-checkout-form]");
 const messageEl = document.querySelector("[data-form-message]");
 const summaryList = document.querySelector("[data-summary-list]");
 const summaryTotal = document.querySelector("[data-summary-total]");
+const submitButton = form.querySelector('[type="submit"]');
 
 /** Validation rules for each input. */
 const rules = {
@@ -99,7 +102,8 @@ function validatePayment(moveFocus = true) {
  * Handles "Complete purchase": validates the form.
  * @param {SubmitEvent} - event
  */
-function handleSubmit(event) {
+
+async function handleSubmit(event) {
   event.preventDefault();
   clearMessage(messageEl);
 
@@ -114,6 +118,32 @@ function handleSubmit(event) {
     });
     return;
   }
+
+  setButtonLoading(submitButton, true, "Placing order...");
+
+  await new Promise((resolve) => setTimeout(resolve, 800));
+
+  saveOrder();
+  clearCart();
+  window.location.assign(pageUrl("success/index.html"));
+}
+
+/**
+ * Saves a summary of the order in localStorage so the success page can show it.
+ */
+function saveOrder() {
+  const data = new FormData(form);
+
+  save(STORAGE_KEYS.lastOrder, {
+    number: `HY-${Date.now().toString().slice(-6)}`,
+    date: new Date().toISOString(),
+    name: data.get("fullName"),
+    email: data.get("email"),
+    address: `${data.get("address")}, ${data.get("postcode")} ${data.get("city")}`,
+    payment: data.get("payment"),
+    items: getCart().map(({ title, quantity }) => ({ title, quantity })),
+    total: getCartTotal(),
+  });
 }
 
 init();
