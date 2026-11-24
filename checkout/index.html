@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Checkout | Hylle</title>
-        <meta name="description" content="Log in to your Hylle account to add products to your cart and check out." />
+        <meta name="description" content="Enter your delivery address and choose a payment method to complete ypur Hylle order." />
         <meta name="theme-color" content="#2F5D50" />
         <meta property="og:title" content="Checkout | Hylle" />
-        <meta property="og:description" content="Log in to your Hylle account to add products to your cart and check out." />
+        <meta property="og:description" content="Enter your delivery address and choose a payment method to complete ypur Hylle order." />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Hylle" />
         <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
@@ -50,6 +50,91 @@
             <header class="page-header">
                 <h1>Checkout</h1>
             </header>
+
+            <div class="split">
+                <form class="form" data-checkout-form novalidate>
+                    <div data-form-message hidden></div>
+
+                    <section class="panel form" aria-labelledby="delivery-heading">
+                        <h2 class="panel__title" id="delivery-heading">Delivery address</h2>
+                    
+
+                    <div class="field">
+                        <label for="fullName">Full Name</label>
+                        <input class="input" id="fullName" name="fullName" type="text" autocomplete="name" aria-describedby="fullName-error" required />
+                        <p class="field__error" id="fullName-error"></p>
+                    </div>
+
+                    <div class="form-row form-row--2">
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <p class="field__hint" id="email-hint">We will send your receipt here</p>
+                            <input class="input" id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error email-hint" required />
+                            <p class="field__error" id="email-error"></p>
+                        </div>
+                        <div class="field">
+                             <label for="phone">Phone</label>
+                            <p class="field__hint" id="phone-hint">8 digits, e.g. 912 56 567</p>
+                            <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" aria-describedby="phone-error phone-hint" required />
+                            <p class="field__error" id="phone-error"></p>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                             <label for="address">Street address</label>
+                            <input class="input" id="address" name="address" type="text" autocomplete="address-line1" aria-describedby="address-error" required />
+                            <p class="field__error" id="address-error"></p>
+                        </div>
+
+                        <div class="form-row form-row--postcode">
+                            <div class="field">
+                            <label for="postcode">Postcode</label>
+                            <input class="input" id="postcode" name="postcode" type="text" autocomplete="postal-code" aria-describedby="postcode-error" required inputmode="numeric" maxlength="4" />
+                            <p class="field__error" id="postcode-error"></p>
+                            </div>
+                            <div class="field">
+                            <label for="city">City</label>
+                            <input class="input" id="city" name="city" type="text" autocomplete="address-level2" aria-describedby="city-error" required />
+                            <p class="field__error" id="city-error"></p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="country">Country</label>
+                            <select class="input" id="country" name="country" autocomplete="country-name" aria-describedby="country-error" required>
+                                <option value="Norway" selected>Norway</option>
+                                <option value="Sweden" selected>Sweden</option>
+                                <option value="Denmark" selected>Denmark</option>
+                                <option value="Finland" selected>Finland</option>
+                            </select>
+                            <p class="field__error" id="country-error"></p>
+                        </div>
+                    </section>
+
+                    <section class="panel" aria-labelledby="payment-heading">
+
+                        <fieldset class="fieldset" data-payment aria-describedby="payment-error">
+                            <legend><h2 class="panel__title panel__title-legend" id="payment-heading">Payment method</h2></legend>
+                            <label class="radio-card"><input type="radio" name="payment" value="Card" /> Card <span class="radio-card__hint">Visa, Mastercard</span></label>
+                            <label class="radio-card"><input type="radio" name="payment" value="Vipps" /> Vipps</label>
+                            <label class="radio-card"><input type="radio" name="payment" value="Klarna" /> Klarna <span class="radio-card__hint">Pay later</span></label>
+                            <label class="radio-card"><input type="radio" name="payment" value="PayPal" /> PayPal</label>
+                            <p class="fiel__error" id="payment-error"></p>
+                        </fieldset>
+                        <p class="summary__note">This is a student project - no real payment is taken.</p>
+                    </section>
+
+                    <button type="submit" class="btn btn--primary btn--block">Complete purchase</button>
+                </form>
+
+                <aside class="panel summary" aria-labelledby="summary-heading">
+                    <h2 class="panel__title" id="summary-heading">Your order</h2>
+                    <ul class="summary__list" data-summary-list></ul>
+                    <p class="summary__row"><span>Delivery</span><span>Free</span></p>
+                    <p class="summary__row summary__row-total"><span>Total</span><span data-summary-total>0 kr</span></p>
+                    <a href="../cart/index.html" class="link-button">Edit cart</a>
+                </aside>
+            </div>
         </div>
     </main>
 
